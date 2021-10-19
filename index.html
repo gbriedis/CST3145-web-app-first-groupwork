@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920px, initial-scale=1.0" />
+    <title>After School Club</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" style="margin: 1em">
+      <h1 id="title">{{titleMessage}}</h1>
+      <img
+        :src="mathsImage"
+        style="width: 15%; float: left; margin-right: 1em"
+        alt=""
+      />
+
+      <div style="float: left">
+        <h2 id="subject">{{subjectMessage}}</h2>
+        <p id="location">Location: {{locationMessage }}</p>
+        <p id="price">Price: {{priceMessage }}</p>
+        <p id="numberOfSpaces">Number of Spaces: {{numberOfSpacesMessage }}</p>
+        <button id="addToCartButton" @click="sellItem">Add To Cart</button>
+      </div>
+    </div>
+  </body>
+</html>
