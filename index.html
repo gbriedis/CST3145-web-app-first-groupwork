@@ -23,5 +23,19 @@
         <button id="addToCartButton" @click="sellItem">Add To Cart</button>
       </div>
     </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          titleMessage: "After School Club",
+          subjectMessage: "Maths",
+          locationMessage: "London",
+          priceMessage: 100,
+          numberOfSpacesMessage: 5,
+          mathsImage: "maths.png",
+        },
+      });
+    </script>
   </body>
 </html>
