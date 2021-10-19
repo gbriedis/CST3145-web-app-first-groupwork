@@ -35,6 +35,13 @@
           numberOfSpacesMessage: 5,
           mathsImage: "maths.png",
         },
+
+        methods: {
+          sellItem() {
+            if (this.numberOfSpacesMessage === 0) return;
+            this.numberOfSpacesMessage -= 1;
+          },
+        },
       });
     </script>
   </body>
