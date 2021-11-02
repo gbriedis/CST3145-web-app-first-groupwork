@@ -6,21 +6,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
-  <body>
+  <body style="display: flex;align-items: center;justify-content:center;">
     <div id="app" style="margin: 1em">
-      <h1 id="title">{{titleMessage}}</h1>
+      <h1 id="title">{{subject.title}}</h1>
       <img
-        :src="mathsImage"
+        :src="subject.image"
         style="width: 15%; float: left; margin-right: 1em"
-        alt=""
+        alt="maths"
       />
 
       <div style="float: left">
-        <h2 id="subject">{{subjectMessage}}</h2>
-        <p id="location">Location: {{locationMessage }}</p>
-        <p id="price">Price: {{priceMessage }}</p>
-        <p id="numberOfSpaces">Number of Spaces: {{numberOfSpacesMessage }}</p>
-        <button id="addToCartButton" @click="sellItem">Add To Cart</button>
+        <h2 id="subject">{{subject.lesson}}</h2>
+        <p id="location">Location: {{subject.location }}</p>
+        <p id="price">Price: {{subject.price }}</p>
+        <p id="numberOfSpaces">Number of Spaces: {{subject.spaces }}</p>
+        <button id="addToCartButton" @click="sellItem" :disabled="subject.spaces == 0">Add To Cart</button>
       </div>
     </div>
 
@@ -28,18 +28,28 @@
       var app = new Vue({
         el: "#app",
         data: {
-          titleMessage: "After School Club",
-          subjectMessage: "Maths",
-          locationMessage: "London",
-          priceMessage: 100,
-          numberOfSpacesMessage: 5,
-          mathsImage: "maths.png",
+          isDisabled:false,
+          cart:[],
+          subject:{
+            id:1234,
+            title: "After School Club",
+            lesson: "Maths",
+            location: "London",
+            price: 100,
+            spaces: 5,
+            image: "maths.png",
+          }
         },
 
         methods: {
           sellItem() {
-            if (this.numberOfSpacesMessage === 0) return;
-            this.numberOfSpacesMessage -= 1;
+            if (this.subject.spaces === 0){
+              this.isDisabled = true;
+            }
+              else {
+                this.cart.push(this.subject.id);
+                this.subject.spaces -= 1;
+              }
           },
         },
       });
